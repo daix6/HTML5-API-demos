@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>WebSocket Demos</title>
+  </head>
+  <body>
+    <h1>Fibonacci Numbers</h1>
+    <p>This page is used for getting the next fibonacci number per second from the server using WebSocket. Click and try it out!</p>
+    <button id='start'>Start</button>
+    <button id="stop">Stop</button>
+    <div id="fib"></div>
+
+    <script type="text/javascript">
+      var socket;
+
+      var start = document.getElementById('start');
+      var stop = document.getElementById('stop');
+
+      var fib = document.getElementById('fib');
+
+      function messageNode(message) {
+        var div = document.createElement('div');
+        div.innerText = message;
+        fib.appendChild(div);
+      }
+
+      start.addEventListener('click', function (e) {
+        if (socket && socket.readyState !== 'CLOSED') return;
+
+        socket = new WebSocket('ws://localhost:8080', 'fib');
+        
+        socket.onerror = function (e) {
+          console.log('Connection error.');
+        }
+
+        socket.onopen = function () {
+          console.log('Connected.');
+          socket.send('hey');
+          messageNode('Client: hey');
+        };
+
+        socket.onclose = function () {
+          console.log('Disconnected.')
+        }
+
+        socket.onmessage = function (e) {
+          messageNode(e.data);
+        };
+      });
+
+      stop.addEventListener('click', function (e) {
+        messageNode('Client: Byebye');
+
+        socket.close();
+        socket = null;
+      });
+  </script>
+  </body>
+</html>
