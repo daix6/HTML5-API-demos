@@ -1,0 +1,102 @@
+div, span {
+  box-sizing: border-box;
+}
+
+header {
+  margin: 50px auto;
+  text-align: center;
+}
+
+header > h2 {
+  font-size: 200%;
+}
+
+#count {
+  margin: 0 5px;
+  padding: 0 2px;
+  color: white;
+  background-color: orange;
+}
+
+.container {
+  width: 75%;
+  min-width: 300px;
+  max-width: 750px;
+  margin: auto;
+
+  border: 5px solid teal;
+}
+
+.room {
+  margin: 10px;
+}
+
+#chat {
+  width: 100%;
+  height: 360px;
+
+  overflow-y: scroll;
+}
+
+.message {
+  margin: 10px 10px 10px 0;
+}
+
+.toast {
+  text-align: center;
+}
+
+.toast span {
+  display: inline-block;
+  padding: 4px;
+
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.bubble {
+  display: inline-block;
+
+  min-height: 24px;
+  padding: 4px;
+
+  line-height: 24px;
+  font-size: 16px;
+  border-radius: 5px;
+
+  text-align: left;
+}
+
+.self {
+  text-align: right;
+}
+
+.other {
+  text-align: left;
+}
+
+.self > .bubble {
+  background-color: #20b2aa;
+}
+
+.other > .bubble {
+  background-color: #87cefa;
+}
+
+.toast > span, .bubble {
+  max-width: 100%;
+
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: normal;
+} 
+
+.controller {
+  margin-top: 10px;
+}
+
+.input {
+  width: 100%;
+  height: 64px;
+}

@@ -1,18 +1,16 @@
 {
-  "name": "websocket-demo",
+  "name": "websocket-demo-chat",
   "version": "1.0.0",
-  "description": "simple websocket demo",
+  "description": "a simple websocket based chatroom",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js",
     "start": "node server.js"
   },
-  "keywords": [
-    "websocket"
-  ],
   "author": "Shawn Dai",
   "license": "MIT",
   "dependencies": {
+    "koa": "^1.2.1",
+    "koa-static": "^2.0.0",
     "websocket": "^1.0.23"
   }
 }

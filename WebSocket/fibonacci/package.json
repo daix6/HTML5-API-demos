@@ -1,0 +1,17 @@
+{
+  "name": "websocket-demo-fibonacci",
+  "version": "1.0.0",
+  "description": "a simple websocket demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "websocket"
+  ],
+  "author": "Shawn Dai",
+  "license": "MIT",
+  "dependencies": {
+    "websocket": "^1.0.23"
+  }
+}
