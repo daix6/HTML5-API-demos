@@ -1,6 +1,6 @@
-## WebSocket Fibonacci
+## WebSocket Chatroom
 
-A simple demo using websocket. Client gets next fibonacci number from server per second using WebSocket.
+A simple live chatroom using WebSocket. It doesn't check IP for the testing convenience, so you can run it in different browser tabs and see what happens~
 
 Client: Use HTML5 WebSocket API.
 
@@ -13,4 +13,4 @@ npm i
 node server.js # node 4.x+ required
 ```
 
-Then visit server.
+Then visit website showed in terminal / CMD.
