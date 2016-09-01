@@ -3,11 +3,30 @@ window.onload = function _documentonload() {
   var input = document.getElementsByClassName('input')[0];
   var count = document.getElementById('count');
 
-  var socket = new WebSocket('ws://localhost:8080', ['chat'])
+  var socket = makeSocket();
+
+  document.addEventListener('keypress', function (e) {
+    if (socket.readyState === WebSocket.OPEN &&
+      e.ctrlKey &&
+      (e.which === 13 || e.which === 10)) {
+        var message = {
+          type: 'Chat',
+          data: input.value
+        };
+        chatroom.appendChild(createMessage(message.data, true));
+        chatroom.scrollTop = 0xffff;
+        input.value = '';
+        socket.send(JSON.stringify(message));
+    }
+  });
+};
+
+function makeSocket() {
+  var socket = new WebSocket('ws://localhost:8080', ['chat']);
 
   socket.onerror = function _onerror(e) {
-    console.log(e);
     console.log('Connection error.');
+    createToast('Can not connect the server.');
   };
 
   socket.onopen = function _onopen(e) {
@@ -32,21 +51,8 @@ window.onload = function _documentonload() {
       return;
   }
 
-  document.addEventListener('keypress', function (e) {
-    if (socket.readyState === WebSocket.OPEN &&
-      e.ctrlKey &&
-      (e.which === 13 || e.which === 10)) {
-        var message = {
-          type: 'Chat',
-          data: input.value
-        };
-        chatroom.appendChild(createMessage(message.data, true));
-        chatroom.scrollTop = 0xffff;
-        input.value = '';
-        socket.send(JSON.stringify(message));
-    }
-  });
-};
+  return socket;
+}
 
 function createToast(content) {
   var message = document.createElement('div');
