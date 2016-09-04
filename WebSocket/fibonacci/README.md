@@ -14,3 +14,7 @@ node server.js # node 4.x+ required
 ```
 
 Then visit server.
+
+### Notes
+
+1. For **WebSocket-Node**, you can get user post protocols from `request.requestedProtocols`.

@@ -37,12 +37,10 @@ function init() {
 
   audio.addEventListener('loadedmetadata', function() {
     console.log('loadedmetadata');
-    console.log(audio.buffered.end(0));
   });
 
   audio.addEventListener('loadeddata', function() {
     console.log('loadeddata');
-    console.log(audio.buffered.end(0));
   });
 
   audio.addEventListener('progress', function() {
